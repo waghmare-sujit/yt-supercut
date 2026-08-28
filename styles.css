@@ -1,0 +1,338 @@
+/* =========================================================
+   YT Supercut — Unified Styles
+   ========================================================= */
+
+/* ── Floating Window ───────────────────────────────────── */
+
+.yts-float-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.yts-float-window {
+  pointer-events: auto;
+  position: absolute;
+  width: 800px;
+  max-width: 95vw;
+  aspect-ratio: 16/9;
+  background-color: #000;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+}
+
+/* Shorts: portrait 9:16, capped width so it doesn't fill the screen */
+.yts-float-window.yts-float-short {
+  width: 340px;
+  aspect-ratio: 9/16;
+  max-height: 85vh;
+}
+
+.yts-float-window iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.yts-drag-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 100%);
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 8px;
+  z-index: 2;
+}
+
+.yts-drag-handle:active {
+  cursor: grabbing;
+}
+
+.yts-drag-grip {
+  display: flex;
+  gap: 3px;
+  opacity: 0.5;
+}
+
+.yts-drag-grip span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  display: block;
+}
+
+.yts-float-close {
+  margin-left: auto;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.15s;
+  padding: 0;
+  box-shadow: none !important;
+}
+
+.yts-float-close:hover {
+  background: rgba(255,80,80,0.7);
+}
+
+/* ── iframe Body Embed (youtube-container) ─────────────── */
+/* Used by the iframe toggle command in note body HTML      */
+
+.youtube-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.youtube-container.shorts {
+  padding-bottom: 177.77%; /* 9:16 */
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.youtube-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+
+/* ── YT Audio Player (from yt-audio) ───────────────────── */
+
+.theme-dark {
+  --yt-bg: #242a35;
+  --yt-border: #474f62;
+  --yt-icon: #ffffff;
+  --yt-time: #8fa0ba;
+}
+
+.theme-light {
+  --yt-bg: #f2f3f5;
+  --yt-border: #d1d5db;
+  --yt-icon: #1f2937;
+  --yt-time: #4b5563;
+}
+
+.yt-audio-custom-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--yt-bg);
+  padding: 2px 14px 18px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--yt-border);
+  width: 100%;
+  margin: 10px 0;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.yt-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.yt-title {
+  font-family: var(--font-interface);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  margin-right: 15px;
+  color: var(--yt-title, var(--yt-icon));
+}
+
+.yts-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.yts-heading-icon,
+.yts-status-icon,
+.yts-live-dot {
+  display: inline-flex;
+  align-items: center;
+}
+
+.yts-heading-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.yts-status-icon svg,
+.yts-live-dot svg {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+.yts-live-dot svg {
+  color: #e02424;
+}
+
+.yt-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.yt-play-btn {
+  background: transparent !important;
+  border: none !important;
+  color: var(--yt-icon);
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  box-shadow: none !important;
+}
+
+.yt-edit-btn {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  box-shadow: none !important;
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+.yt-play-btn:hover, .yt-edit-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.yt-time {
+  color: var(--yt-time);
+  font-size: 12px;
+  font-family: monospace;
+  min-width: 80px;
+  text-align: right;
+}
+
+.yt-bottom-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.yt-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100% !important;
+  max-width: none !important;
+  flex: 1 1 100% !important;
+  height: 6px;
+  background: var(--track-bg, #444);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.yt-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--thumb-color, #fff);
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  transition: transform 0.1s;
+}
+
+.yt-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.yt-hidden-player {
+  display: none;
+}
+
+.yt-error {
+  color: #ff6b6b;
+  background: #2a1b1b;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  border: 1px solid #ff6b6b;
+}
+
+/* ── Sonicfonia Status Bar ──────────────────────────────── */
+
+.yts-sonicfonia-status {
+  font-size: 12px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.yts-sonicfonia-status:hover {
+  opacity: 1;
+}
+
+/* ── Settings Tab ──────────────────────────────────────── */
+
+.yts-settings-desc {
+  color: var(--text-muted);
+  margin-bottom: 1em;
+  font-size: 13px;
+}
+
+.yts-settings-section {
+  background: var(--background-secondary);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  border-left: 3px solid var(--interactive-accent);
+}
+
+.yts-settings-section p {
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.yts-settings-section a {
+  color: var(--interactive-accent);
+}

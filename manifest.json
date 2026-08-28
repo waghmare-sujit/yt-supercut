@@ -1,0 +1,11 @@
+{
+  "id": "yt-supercut",
+  "name": "YT Supercut",
+  "version": "1.2.0",
+  "minAppVersion": "1.4.0",
+  "description": "All-in-one YouTube toolkit: floating player, inline embeds, thumbnail ↔ video toggle, metadata fetcher, live timestamp links, background audio (Sonicfonia), and custom audio player (YT Audio) — unified in one plugin.",
+  "author": "Waghmare",
+  "authorUrl": "https://github.com/waghmare-sujit",
+  "fundingUrl": "https://paypal.me/waghmaresujit",
+  "isDesktopOnly": false
+}
